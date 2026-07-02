@@ -1,0 +1,64 @@
+{
+  "mempelai": {
+    "wanita": {
+      "namaPanggilan": "Fatimah",
+      "namaLengkap": "Fatimah Az Zahra",
+      "namaOrangTua": "Putri dari Bapak Fulan & Ibu Fulanah",
+      "foto": "image/Wanita.png"
+    },
+    "pria": {
+      "namaPanggilan": "Hamzah",
+      "namaLengkap": "Hamzah Hamid",
+      "namaOrangTua": "Putra dari Bapak Fulan & Ibu Fulanah",
+      "foto": "image/Pria (2).png"
+    }
+  },
+  "acara": {
+    "tanggalTeks": "Ahad, 26 Juli 2026",
+    "tanggalCountdown": "Jul 26, 2026 08:00:00",
+    "lokasi": {
+      "nama": "Auditorium Masjid",
+      "alamat": "Jalan Raya Bojongsari No.5, Bogor",
+      "maps": "https://maps.google.com"
+    }
+  },
+  "ourStory": [
+    {
+      "tanggal": "Januari 2020",
+      "judul": "Pertama Bertemu",
+      "cerita": "Semua berawal dari sebuah pertemuan sederhana. Dari obrolan kecil tersebut kami mulai mengenal satu sama lain dan menemukan banyak kesamaan."
+    },
+    {
+      "tanggal": "Maret 2022",
+      "judul": "Mulai Menjalin Hubungan",
+      "cerita": "Hari demi hari kami lalui bersama. Saling mendukung, memahami, dan belajar menjadi pribadi yang lebih baik."
+    },
+    {
+      "tanggal": "Desember 2025",
+      "judul": "Lamaran",
+      "cerita": "Dengan penuh rasa syukur dan restu keluarga, kami memutuskan untuk melangkah ke jenjang yang lebih serius."
+    },
+    {
+      "tanggal": "Juli 2026",
+      "judul": "Pernikahan",
+      "cerita": "Dengan izin Allah SWT dan doa keluarga, kami memulai perjalanan baru dalam ikatan pernikahan."
+    }
+  ],
+  "gifts": [
+    {
+      "type": "bank",
+      "bankName": "BNI",
+      "accountNumber": "12345678901",
+      "accountName": "Fatimah Az Zahra"
+    },
+    {
+      "type": "bank",
+      "bankName": "BCA",
+      "accountNumber": "0987654321",
+      "accountName": "Hamzah Hamid"
+    }
+  ],
+  "wishes": {
+    "scriptURL": "https://script.google.com/macros/s/AKfycbxVmci1q0Jvqo3euxRq2rvuLQrf3jXgiBqI42mhISzcTw50DAhlIFOc2KhZWAhXJ0Ck/exec"
+  }
+}

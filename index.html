@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema AlmaShafa.Invitation - Basic-01</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="image/Logo.png">
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loader-content">
+            <p>THE WEDDING OF</p>
+            <h1 id="loader-name">Nama & Nama</h1>
+            <span>Loading Invitation...</span>
+        </div>
+    </div>
+
+    <div class="desktop-panel">
+        <div class="desktop-overlay">
+            <p>THE WEDDING OF</p>
+            <h1 id="desktop-name">Nama<br>&<br>Nama</h1>
+            <span id="desktop-date">Tanggal Acara</span>
+        </div>
+    </div>
+
+    <div class="invitation-container">
+        
+        <section class="cover" id="cover">
+            <div class="cover-content"> 
+                <div class="cover-text-group">
+                    <p class="subtitle">THE WEDDING OF</p>
+                    <h1 id="cover-name">Nama & Nama</h1>
+                    <p id="cover-date">Tanggal Acara</p>
+                </div>
+
+                <div class="guest-box">
+                    <p>
+                        <span class="yth-text">Kepada Yth. Bapak/Ibu/Saudara/i</span>
+                        <strong id="guest-name">Tamu Undangan</strong>
+                    </p>
+                    <button id="openInvitation">✉ BUKA UNDANGAN</button>
+                </div>
+            </div>
+        </section>
+
+        <main id="main-content" class="hidden">
+            
+            <audio id="music" loop>
+                <source src="Joe Hisaishi - A Town with an Ocean View.mp3">
+            </audio>
+            <button id="musicButton" ><i class="fa-solid fa-compact-disc"></i></button>
+
+            <section class="section intro reveal">
+                <div class="section-content bg-image"> 
+                    <div class="cover-text-group">
+                        <p class="small-title">THE WEDDING OF</p>
+                        <h1 id="intro-name">Cinta<br>&<br>Nama</h1>
+                        <p id="intro-date">Tanggal Acara</p>
+                    </div>
+                </div> </section>
+
+            <section class="section quote reveal">
+                <div class="section-content bg-plain">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="quote-text">
+                        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."
+                    </p>
+                    <strong class="quote-source">QS. Ar-Rum: 21</strong>
+                </div>
+            </section>
+
+            <section class="section couple reveal">
+                <div class="section-content bg-image">
+                    <div class="couple-image">
+                        <h2>Couple</h2>
+                        <img src="image/Mempelai.png" alt="Foto Pengantin">
+                    </div>
+
+                    <div class="person">
+                        <h2 id="bride-nick">Nama</h2>
+                        <p id="bride-name">Nama Lengkap</p>
+                        <p id="bride-parent" style="font-size:12px; margin-top:10px;"></p>
+                    </div>
+                    
+                    <p class="and">&</p>
+                    
+                    <div class="person">
+                        <h2 id="groom-nick">Nama</h2>
+                        <p id="groom-name">Nama Lengkap</p>
+                        <p id="groom-parent" style="font-size:12px; margin-top:10px;"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <div class="section-content bg-plain">
+                    <h2>Save The Date</h2>
+                    <div class="countdown">
+                        <div><strong id="days">00</strong><span>Hari</span></div>
+                        <div><strong id="hours">00</strong><span>Jam</span></div>
+                        <div><strong id="minutes">00</strong><span>Menit</span></div>
+                        <div><strong id="seconds">00</strong><span>Detik</span></div>
+                    </div>
+                    <div class="event-box">
+                        <h3 id="event-date">Tanggal Acara</h3>
+                        <p id="event-location-name">Lokasi</p>
+                        <p id="event-address">Alamat</p>
+                        <a id="event-map" href="#" target="_blank" class="btn-map">Lihat Peta</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <div class="section-content bg-image">
+                    <h2>Our Story</h2>
+                    <div class="timeline" id="story-container"></div>
+                </div>
+            </section>
+
+            <section class="section reveal">
+                <div class="section-content bg-plain">
+                    <h2>Wedding Gift</h2>
+                    <p>Bagi keluarga dan sahabat yang ingin memberikan tanda kasih, dapat mengirimkan melalui:</p>
+                    <div id="gift-container"></div>
+                </div>
+            </section>
+
+            <section class="section wishes reveal">
+                <div class="section-content bg-image">
+                    <h2>Wishes</h2>
+                    <p>Ucapan dan doa untuk kedua mempelai</p>
+                    <button id="toggle-wishes" class="wish-toggle"><i class="fa-solid fa-comments"></i> Lihat Ucapan</button>
+                    
+                    <div id="wishes-area" class="hidden">
+                        <form id="wish-form">
+                            <input type="text" id="wish-name" name="nama" placeholder="Nama Anda" required>
+                            <select id="attendance" name="kehadiran" required>
+                                <option value="">Konfirmasi Kehadiran</option>
+                                <option value="Hadir">Hadir</option>
+                                <option value="Tidak Hadir">Tidak Hadir</option>
+                            </select>
+                            <textarea id="wish-message" name="pesan" placeholder="Tuliskan ucapan dan doa" maxlength="300" required></textarea>
+                            <button type="submit" id="submit-wish">Kirim Ucapan</button>
+                        </form>
+                        <div id="wish-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section closing reveal">
+                <div>
+                    <h3>TERIMA KASIH</h3>
+                    <p id="closing-message">Atas kehadiran dan doa restu Anda, kami mengucapkan terima kasih.</p>
+                    <p id="closing-message">KAMI YANG BERBAHAGIA</p>
+                    <h2 id="closing-names">Nama & Nama</h2>
+                </div>
+
+                <footer>
+                    <div class="ty-footer h3">&copy; AlmaShafa.invitation 2026</div>
+                </footer>
+            </section>
+
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
