@@ -883,3 +883,41 @@ main { width: 100%; }
         height: 100%;
     }
 }
+@media (max-width: 768px) {
+    /* 1. Kunci section cover agar pas 100% tinggi dan lebar layar HP */
+    .cover {
+        height: 100svh !important; /* Pastikan ini ada agar tingginya pas */
+        min-height: 100svh !important;
+        width: 100% !important;
+        
+        /* 2. Gunakan Flexbox untuk menyusun otomatis konten di tengah */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* Menengahkan secara vertikal */
+        align-items: center !important; /* Menengahkan secara horizontal */
+        
+        /* 3. Cegah scroll yang tidak disengaja di halaman cover */
+        overflow: hidden !important; 
+        
+        /* 4. Bersihkan margin dan padding dari container luar */
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 5. Tarik konten ke tengah dan netralkan margin manual */
+    .cover .cover-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cover .cover-text-group {
+        /* Kita nol-kan margin-top karena flexbox (justify-content: center) sudah menaruhnya pas di tengah */
+        margin-top: 0 !important; 
+        margin-bottom: 0 !important; 
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
