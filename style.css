@@ -43,6 +43,7 @@ body {
     display: flex;
     overflow: hidden;
     color: var(--text);
+    overscroll-behavior-y: contain; /* Mencegah layar terpotong atau "terpental" saat ditarik */
 }
 
 .hidden { display: none !important; }
@@ -78,9 +79,9 @@ body {
 .invitation-container {
     width: 420px;
     flex-shrink: 0;
-    height: 100vh;
+    height: 100dvh;
 
-    background: url(image/Potrait\ 2.png);
+    background: url(image/Potrait.png);
     background-size: cover;
     background-position: center;
 
@@ -123,8 +124,9 @@ main { width: 100%; }
 
 /* 2. Bungkus teks (subtitle, h1, date) agar menjadi satu kesatuan di tengah */
 .cover-text-group {
-    margin-top: auto;
+    margin-top: 250px;
     margin-bottom: auto; /* Kombinasi auto ini otomatis mengunci teks tepat di tengah vertikal */
+    color: #556B4F;
 }
 
 .subtitle { 
@@ -153,11 +155,13 @@ main { width: 100%; }
 .guest-box {
     margin-top: 20px; /* Jarak aman dari elemen di atasnya */
     padding: 25px;
-    background: rgba(255, 255, 255, 0.75);
+    background: #ffffffbf;
     border-radius: 25px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid #ffffff80;
     width: 100%;
+    box-sizing: border-box; /* Agar padding tidak merusak lebar */
+    margin-bottom: 25px;    /* Memberikan jarak "nafas" di bawah kotak */
 }
 
 .guest-box button, #submit-wish, .wish-toggle, .btn-map {
@@ -192,17 +196,12 @@ main { width: 100%; }
 .section-content {
     width: 100%;
     max-width: none;
-
     min-height: 50vh;
-
     margin: 0;
     padding: 40px 25px;
-
     border-radius: 0;
-
     box-shadow: none;
     border: none;
-
     backdrop-filter: none;
 }
 
@@ -232,8 +231,8 @@ main { width: 100%; }
     margin-bottom: 15px;
 }
 
-.small-title { letter-spacing: 4px; font-size: 14px; }
-.intro h1 { font-family: var(--font-script); font-size: 50px; margin: 10px 0; }
+.small-title { letter-spacing: 4px; font-size: 14px; color:#556B4F;}
+.intro h1 { font-family: var(--font-script); font-size: 50px; margin: 10px 0; color:#556B4F;}
 
 /* Menambahkan jarak antar card di section Our Story */
 #story-container .story-item.section-content {
@@ -817,10 +816,10 @@ main { width: 100%; }
 }
 
 .wishes .bg-image {
-    min-height: 100vh;
+    min-height: 60vh;
 }
 .intro .section-content {
-    min-height: 100vh;
+    min-height: 100dvh;
     
     display: flex;
     justify-content: center;
@@ -835,7 +834,7 @@ main { width: 100%; }
 
 
 .intro .bg-image {
-    background-image: url('image/Hijau.png');
+    background-image: url('image/Potrait\ 2.png');
     background-size: cover;
     background-position: center;
 }
