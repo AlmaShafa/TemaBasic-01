@@ -817,10 +817,12 @@ main { width: 100%; }
 
 .intro .bg-image {
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100); /* ⬅️ Mengunci tinggi HP */
 }
 
 .quote .bg-plain {
     min-height: 30vh;
+     min-height: calc(var(--vh, 1vh) * 100); /* ⬅️ Mengunci tinggi HP */
 }
 
 .couple .bg-image {
