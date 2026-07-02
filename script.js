@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- 0. MENGUNCI TINGGI LAYAR HP (FIX BACKGROUND LOMPAT) ---
+    function pasangTinggiMobile() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    pasangTinggiMobile();
+    // Hanya hitung ulang jika HP diputar (landscape/portrait), bukan saat di-scroll
+    window.addEventListener('orientationchange', pasangTinggiMobile);
+    // -----------------------------------------------------------
+
     const loading = document.getElementById("loading-screen");
     const loaderName = document.getElementById("loader-name");
     let weddingData;
