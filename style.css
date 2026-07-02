@@ -182,6 +182,18 @@ main { width: 100%; }
     margin-bottom: 15px; /* Ubah angka ini untuk mengatur jaraknya (misal: 10px, 20px) */
     font-size: 16px;
 }
+/* Ukuran default untuk Desktop */
+#guest-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;color:#556B4F;
+}
+
+/* Ukuran khusus untuk HP (layar maksimal 768px) */
+@media (max-width: 768px) {
+    #guest-name {
+        font-size: 20px; /* Ukuran lebih kecil untuk HP agar tidak kepotong */
+    }
+}
 
 /* =========================
    SECTIONS & CARDS
