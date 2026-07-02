@@ -822,7 +822,6 @@ main { width: 100%; }
 
 .quote .bg-plain {
     min-height: 30vh;
-     min-height: calc(var(--vh, 1vh) * 100); /* ⬅️ Mengunci tinggi HP */
 }
 
 .couple .bg-image {
