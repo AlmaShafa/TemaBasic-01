@@ -26,6 +26,7 @@
     --content-max-width: 700px; /* Batasan lebar di layar desktop/laptop */
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -52,7 +53,8 @@ body {
    DESKTOP LEFT PANEL
 ========================= */
 .desktop-panel {
-    flex: 1;
+    flex: 0 0 70%;   /* Panel kiri 70% */
+    max-width: 70%;
     height: 100vh;
     background: linear-gradient(rgba(141, 140, 140, 0.226), rgba(0, 0, 0, 0.082)), var(--bg-desktop);
     background-size: cover;
@@ -83,35 +85,21 @@ body {
     height: 100dvh;
     overflow-y: auto;
     position: relative;
-    background: transparent !important; 
-    z-index: 1;
-}
-
-/* Background tetap di belakang seluruh section saat scroll */
-.invitation-container::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('image/Potrait.webp');
+    
+    /* Tambahkan pengaturan background langsung di sini */
+    background-image: var(--bg-mobile);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    z-index: -2;
-    pointer-events: none;
+    background-attachment: scroll; /* scroll berfungsi menahan gambar tetap diam di tempat saat tamu men-scroll konten di dalamnya */
+    
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
     .desktop-panel { display: none; }
     .invitation-container {
         width: 100%;
-    }
-    
-    .invitation-container::before {
-        width: 100vw;
     }
 }
 
@@ -280,11 +268,29 @@ main { width: 100%; }
     color:#556B4F;
 }
 
+#story-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 0px; /* DIUBAH ke 0px agar kotak mepet ke tepi kanan-kiri container */
+    width: 100%;
+}
+
 #story-container .story-item.section-content {
+    background: var(--card-bg);
+    border: 1px solid rgba(82, 107, 85, 0.2);
+    border-left: 4px solid var(--sage-dark);
+    border-radius: 12px;
+    
+    /* Ruang di dalam kotak: 20px atas-bawah, 15px kanan-kiri */
+    padding: 20px 15px !important; 
+    
     margin-bottom: 0px;
-    border-left: none;
-    padding: 20px;
-    min-height: 20vh;
+    min-height: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(4px);
+    text-align: left;
+    width: 100%; /* Memaksa kotak memanfaatkan seluruh lebar yang ada */
 }
 
 /* =========================
@@ -409,13 +415,23 @@ main { width: 100%; }
 
 .story-item h3 { 
     color: var(--sage-dark); 
-    margin: 3px 0; 
+    font-family: var(--font-body); /* Menggunakan font Montserrat agar terlihat modern */
+    font-weight: 700;
+    margin: 5px 0 8px 0; 
     font-size: 16px; 
 }
 
+.story-item p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #444444;
+    margin: 0;
+}
+
 .story-item span { 
-    font-size: 12px; 
-    color: #3a4d34; 
+    font-size: 11px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* =========================
@@ -429,8 +445,8 @@ main { width: 100%; }
 }
 
 .atm-card {
-    background: linear-gradient(135deg, var(--sage-dark) 0%, #3a4d34 100%);
-    color: white;
+    background: linear-gradient(245deg, var(--sage-dark) 0%, #cbd9c7 100%);
+    color: #ffffff;
     padding: 20px;
     border-radius: 15px;
     position: relative;
@@ -1059,4 +1075,41 @@ main { width: 100%; }
     .wishes .section-content {
         padding: 0;
     }
+}
+/* =========================
+   GAYA LOGO GAMBAR ASLI (BARU)
+========================= */
+.bank-info-wrapper {
+    display: flex;
+    align-items: center;
+    height: 42px; /* DINAIKKAN dari 32px agar logo lebih tinggi/besar */
+}
+
+.logo-bank-img {
+    height: 100%;             
+    max-width: 200px;         /* DINAIKKAN dari 90px agar logo yang memanjang ke samping (seperti Mandiri/BNI) tidak gepeng */
+    object-fit: contain;      
+    background-color: #ffffff00; 
+    padding: 4px 10px;        /* Sedikit disesuaikan jarak napasnya */
+    border-radius: 6px;       
+    box-shadow: 0 2px 5px #00000000;
+}
+
+/* Base style fallback & alamat tetap dipertahankan */
+.logo-bank.generic {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.logo-bank.address-badge { 
+    background: #ffffff; 
+    color: var(--sage-dark); 
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
 }
