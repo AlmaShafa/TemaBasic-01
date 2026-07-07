@@ -816,7 +816,7 @@ main { width: 100%; }
     min-height: 50vh;
 }
 
-.wishes .bg-image {
+.wishes .bg-plain {
     min-height: 35vh;
     display: flex;
     justify-content: center;
@@ -825,7 +825,7 @@ main { width: 100%; }
     width: 100%;
 }
 
-.wishes .bg-plain {
+.wishes .bg-image {
     background-color: #8585853a;
     width: 100%;
     max-width: none !important;
