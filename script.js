@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
     pasangTinggiMobile();
-    // Hanya hitung ulang jika HP diputar (landscape/portrait), bukan saat di-scroll
     window.addEventListener('orientationchange', pasangTinggiMobile);
     // -----------------------------------------------------------
 
@@ -52,86 +51,86 @@ document.addEventListener("DOMContentLoaded", () => {
    OPEN INVITATION
 ========================= */
 
-const openButton = document.getElementById("openInvitation");
-const cover = document.getElementById("cover");
-const main = document.getElementById("main-content");
+    const openButton = document.getElementById("openInvitation");
+    const cover = document.getElementById("cover");
+    const main = document.getElementById("main-content");
 
-const music = document.getElementById("music");
-const musicButton = document.getElementById("musicButton");
+    const music = document.getElementById("music");
+    const musicButton = document.getElementById("musicButton");
 
-let isPlaying = false;
+    let isPlaying = false;
 
-/* =========================
+    /* =========================
    BUKA UNDANGAN
 ========================= */
 
-if (openButton) {
-    openButton.addEventListener("click", () => {
+    if (openButton) {
+        openButton.addEventListener("click", () => {
 
-        cover.style.opacity = "0";
+            cover.style.opacity = "0";
 
-        setTimeout(() => {
+            setTimeout(() => {
 
-            cover.style.display = "none";
-            main.classList.remove("hidden");
+                cover.style.display = "none";
+                main.classList.remove("hidden");
 
-            loadWishes();
+                loadWishes();
 
-            if (music) {
-                music.play()
-                    .then(() => {
-                        isPlaying = true;
-                    })
-                    .catch(err => {
-                        console.log("Autoplay prevented:", err);
-                    });
-            }
+                if (music) {
+                    music.play()
+                        .then(() => {
+                            isPlaying = true;
+                        })
+                        .catch(err => {
+                            console.log("Autoplay prevented:", err);
+                        });
+                }
 
-        }, 100);
+            }, 100);
 
-    });
-}
+        });
+    }
 
-/* =========================
+    /* =========================
    TOMBOL MUSIC
 ========================= */
 
-if (musicButton) {
+    if (musicButton) {
 
-    musicButton.addEventListener("click", () => {
+        musicButton.addEventListener("click", () => {
 
-        if (music.paused) {
-            music.play();
-        } else {
-            music.pause();
-        }
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
 
-    });
+        });
 
-}
+    }
 
-/* =========================
+    /* =========================
    SINKRONKAN STATUS AUDIO
 ========================= */
 
-if (music) {
+    if (music) {
 
-    music.addEventListener("play", () => {
-        isPlaying = true;
-        musicButton.classList.add("playing");
-    });
+        music.addEventListener("play", () => {
+            isPlaying = true;
+            musicButton.classList.add("playing");
+        });
 
-    music.addEventListener("pause", () => {
-        isPlaying = false;
-        musicButton.classList.remove("playing");
-    });
+        music.addEventListener("pause", () => {
+            isPlaying = false;
+            musicButton.classList.remove("playing");
+        });
 
-    music.addEventListener("ended", () => {
-        isPlaying = false;
-        musicButton.classList.remove("playing");
-    });
+        music.addEventListener("ended", () => {
+            isPlaying = false;
+            musicButton.classList.remove("playing");
+        });
 
-}
+    }
 
     /* =========================
        LOAD BASIC DATA
@@ -214,21 +213,20 @@ if (music) {
        OUR STORY
     ========================= */
     function renderStory() {
-    const container = document.getElementById("story-container");
-    if(!container) return;
-    container.innerHTML = ""; // Bersihkan kontainer
-    
-    weddingData.ourStory.forEach(item => {
-        // Kita menambahkan class "section-content" di sini
-        container.innerHTML += `
-            <div class="story-item reveal section-content">
-                <span style="display:block; font-size:12px; color:var(--sage-dark); font-weight:bold;">${item.tanggal}</span>
-                <h3 style="margin: 5px 0;">${item.judul}</h3>
-                <p>${item.cerita}</p>
-            </div>
-        `;
-    });
-}
+        const container = document.getElementById("story-container");
+        if(!container) return;
+        container.innerHTML = "";
+        
+        weddingData.ourStory.forEach(item => {
+            container.innerHTML += `
+                <div class="story-item reveal section-content">
+                    <span style="display:block; font-size:12px; color:var(--sage-dark); font-weight:bold;">${item.tanggal}</span>
+                    <h3 style="margin: 5px 0;">${item.judul}</h3>
+                    <p>${item.cerita}</p>
+                </div>
+            `;
+        });
+    }
 
     /* =========================
        GIFT (ATM CARD STRUCTURE)
@@ -271,47 +269,39 @@ if (music) {
         const toggleBtn = document.getElementById("toggle-wishes");
         const wishesArea = document.getElementById("wishes-container");
 
-        // Toggle buka/tutup form
         if(toggleBtn && wishesArea) {
             toggleBtn.addEventListener("click", () => {
                 wishesArea.classList.toggle("hidden");
             });
         }
-        // Catatan: Kode Submit form lokal versi lama DIHAPUS agar tidak bentrok 
-        // dengan kode Google Sheets di bawah.
     }
 
     /* =========================
-       REVEAL ANIMATION (SCROLL FADE IN & FADE OUT)
+       REVEAL ANIMATION (SCROLL FADE IN)
     ========================= */
     function setupIntersectionObserver() {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Muncul (Fade In) saat elemen terlihat di layar
-                entry.target.classList.add("active");
-                
-                // OPSIONAL: Hentikan observasi pada elemen ini agar tidak boros baterai/RAM
-                observer.unobserve(entry.target); 
-            }
-            // Bagian ELSE (remove active) DIHAPUS agar tidak memicu bug getar balik
-        });
-    }, { 
-        threshold: 0.1, // Diturunkan sedikit ke 10% agar lebih cepat terpicu aman
-        rootMargin: "0px 0px -20px 0px" // Memberikan jarak aman di batas bawah layar
-    }); 
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: "0px 0px -20px 0px"
+        }); 
 
-    // Terapkan ke semua elemen yang memiliki class .reveal
-    document.querySelectorAll(".reveal").forEach(el => {
-        observer.observe(el);
-    });
+        document.querySelectorAll(".reveal").forEach(el => {
+            observer.observe(el);
+        });
     }
-/* =========================
-       5. RSVP Form to Google Sheets (DIPINDAHKAN KE DALAM SINI)
+
+    /* =========================
+       RSVP Form to Google Sheets
     ========================= */
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxVmci1q0Jvqo3euxRq2rvuLQrf3jXgiBqI42mhISzcTw50DAhlIFOc2KhZWAhXJ0Ck/exec'; 
     
-    // Ambil form berdasarkan atribut name="submit-to-google-sheet"
     const rsvpForm = document.forms['submit-to-google-sheet'];
     const btnSubmit = document.getElementById('btn-submit');
     const wishesList = document.getElementById('wishes-list');
@@ -358,23 +348,20 @@ if (music) {
                     const attendance = document.getElementById('attendance').value;
                     const message = document.getElementById('message').value;
 
-                    // Logika SVG Badge Verified
                     let iconHTML = '';
                     if (attendance === 'Hadir') {
-                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
+                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 3.775-.63 10.25-8.017 4.368 10.52 4.86 2.06 8.883 4.501-7.752 11.55-2.75-9.916-5.062.058-11.572zM27.02 25.27L18.41 27.85l-1.47-6.35-1.02-8.77 8.59.028 1.52 12.52z"/></svg>`;
                     } else {
-                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm6.202 10.706 2.2 2.2-6.2 6.2 6.2 6.2-2.2 2.2-6.2-6.2-6.2 6.2-2.2-2.2 6.2-6.2-6.2-6.2 2.2-2.2 6.2 6.2 6.2-6.2Z" fill-rule="evenodd"></path></svg>`;
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 3.775-.63 10.25-8.017 4.368 10.52 4.86 2.06 8.883 4.501-7.752 11.55-2.75-9.916-5.062.058-11.572zM27.02 25.27L18.41 27.85l-1.47-6.35-1.02-8.77 8.59.028 1.52 12.52z"/></svg>`;
                     }
 
                     const wishItem = document.createElement('div');
                     wishItem.classList.add('wish-item');
                     wishItem.innerHTML = `<h4>${name} <span style="margin-left: 5px;">${iconHTML}</span></h4><p>${message}</p>`;
 
-                    // Posisikan di bagian paling atas kolom ucapan
                     if(wishesList) wishesList.insertBefore(wishItem, wishesList.firstChild);
                     
                     totalUcapan++;
-                    // Cek jika ID hitungan ada di HTML, baru ubah angkanya (mencegah error)
                     if(countWishes) countWishes.innerText = totalUcapan;
                     
                     rsvpForm.reset();
@@ -384,7 +371,6 @@ if (music) {
                         jumlahSelect.setAttribute('required', 'true');
                     }
 
-                    // Tampilkan pesan berhasil ke tamu
                     alert('Terima kasih! Konfirmasi kehadiran dan ucapan Anda telah terkirim.');
                 })
                 .catch(error => {
@@ -396,9 +382,11 @@ if (music) {
         });
     }
 
-    // --- 6. Mengambil Ucapan Saat Web Dibuka (doGet) ---
+    /* =========================
+       LOAD WISHES (doGet)
+    ========================= */
     function loadWishes() {
-        if(!wishesList) return; // Mencegah error jika div tidak ditemukan
+        if(!wishesList) return;
         
         wishesList.innerHTML = '<p style="text-align:center; font-size:12px;"><i class="fa-solid fa-spinner fa-spin"></i> Memuat ucapan...</p>';
         
@@ -412,9 +400,9 @@ if (music) {
                 data.forEach(item => {
                     let iconHTML = '';
                     if (item.kehadiran === 'Hadir') {
-                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
+                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 3.775-.63 10.25-8.017 4.368 10.52 4.86 2.06 8.883 4.501-7.752 11.55-2.75-9.916-5.062.058-11.572zM27.02 25.27L18.41 27.85l-1.47-6.35-1.02-8.77 8.59.028 1.52 12.52z"/></svg>`;
                     } else {
-                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm6.202 10.706 2.2 2.2-6.2 6.2 6.2 6.2-2.2 2.2-6.2-6.2-6.2 6.2-2.2-2.2 6.2-6.2-6.2-6.2 2.2-2.2 6.2 6.2 6.2-6.2Z" fill-rule="evenodd"></path></svg>`;
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 3.775-.63 10.25-8.017 4.368 10.52 4.86 2.06 8.883 4.501-7.752 11.55-2.75-9.916-5.062.058-11.572zM27.02 25.27L18.41 27.85l-1.47-6.35-1.02-8.77 8.59.028 1.52 12.52z"/></svg>`;
                     }
 
                     const wishItem = document.createElement('div');
@@ -430,7 +418,6 @@ if (music) {
             });
     }
 
-    // Panggil fungsi mengambil ucapan otomatis
     loadWishes();
 
-}); // <--- PENUTUP DOMContentLoaded HARUS BERADA DI BARIS PALING BAWAH INI
+});
