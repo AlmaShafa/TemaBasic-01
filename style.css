@@ -145,7 +145,7 @@ main { width: 100%; }
 
 /* 2. Bungkus teks (subtitle, h1, date) agar menjadi satu kesatuan di tengah */
 .cover-text-group {
-    margin-top: 170px;
+    margin-top: 200px;
     margin-bottom: auto; /* Kombinasi auto ini otomatis mengunci teks tepat di tengah vertikal */
     color: #556B4F;
     text-align: center !important;
