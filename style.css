@@ -556,10 +556,20 @@ main { width: 100%; }
     width: 100%;
     max-width: none;
     min-height: 60vh;
-    padding: 50px 30px;
+    padding: 0;
     text-align: center;
     border-radius: 0;
     margin: 0;
+}
+
+.wishes .bg-plain {
+    width: 100%;
+    max-width: none;
+    min-height: auto;
+    padding: 50px 0;
+    text-align: center;
+    margin: 0;
+    background-color: rgba(232, 239, 226, 0.85);
 }
 
 .wishes h2 {
@@ -573,6 +583,7 @@ main { width: 100%; }
     margin-bottom: 15px;
     line-height: 1.6;
     color: #2a3a2a;
+    font-size: 16px;
 }
 
 .wish-toggle {
@@ -587,6 +598,7 @@ main { width: 100%; }
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 14px;
 }
 
 .wish-toggle:hover {
@@ -600,12 +612,14 @@ main { width: 100%; }
 
 #wishes-container {
     width: 100%;
+    padding: 0 25px;
 }
 
 #rsvp-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    max-width: 100%;
 }
 
 #rsvp-form input,
@@ -628,7 +642,7 @@ main { width: 100%; }
 }
 
 #btn-submit {
-    width: 160px;
+    width: 170px;
     margin: 20px auto 0;
     padding: 12px;
     border-radius: 30px;
@@ -638,6 +652,7 @@ main { width: 100%; }
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 14px;
 }
 
 #btn-submit:hover {
@@ -725,6 +740,26 @@ main { width: 100%; }
 
 .loader-content { 
     text-align: center; 
+}
+
+.loader-content p {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #556B4F;
+    margin-bottom: 15px;
+}
+
+.loader-content h1 {
+    font-family: var(--font-script);
+    font-size: 45px;
+    color: #556B4F;
+    margin: 10px 0;
+}
+
+.loader-content span {
+    font-size: 14px;
+    color: #8b9980;
+    letter-spacing: 1px;
 }
 
 /* =========================
@@ -831,20 +866,11 @@ main { width: 100%; }
     width: 100%;
 }
 
-.wishes .bg-plain {
-    background-color: rgba(232, 239, 226, 0.8);
-    width: 100%;
-    max-width: none !important;
-    border-radius: 0 !important;
-    padding: 40px 25px;
-    transition: all 0.5s ease-in-out;
-    height: auto;
-}
-
 .wish-description {
     color: #526b55;
     font-size: 16px;
     margin-bottom: 20px;
+    padding: 0 25px;
 }
 
 .intro .section-content {
@@ -986,7 +1012,7 @@ main { width: 100%; }
     color: white;
     padding: 12px 20px;
     border-radius: 12px;
-    margin: 15px 0;
+    margin: 15px 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1031,6 +1057,6 @@ main { width: 100%; }
     }
     
     .wishes .section-content {
-        padding: 40px 15px;
+        padding: 0;
     }
 }
