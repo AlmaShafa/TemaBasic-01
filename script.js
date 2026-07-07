@@ -25,15 +25,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const name = data.mempelai.wanita.namaPanggilan + " & " + data.mempelai.pria.namaPanggilan;
             if(loaderName) loaderName.innerHTML = name;
 
-            // Menghilangkan loading screen
+            // Menghilangkan loading screen setelah 3 detik
             setTimeout(() => {
                 if(loading) {
                     loading.style.opacity = "0";
                     setTimeout(() => {
                         loading.remove();
-                    }, 100);
+                    }, 800);
                 }
-            }, 0);
+            }, 3000);
 
             // Inisialisasi Fungsi
             loadWeddingData();
