@@ -229,21 +229,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================
-       GIFT (ATM CARD STRUCTURE)
+       GIFT (ATM CARD & ADDRESS STRUCTURE WITH REAL LOGO LINKS)
     ========================= */
     function renderGift() {
         const container = document.getElementById("gift-container");
         if(!container) return;
         container.innerHTML = ""; 
         
+        // Fungsi untuk mengambil link gambar logo asli yang stabil
+        function dapatkanLogoBank(bankName) {
+            const nama = bankName.toLowerCase().trim();
+            
+            // Menggunakan CDN/API logo resmi yang aman dan otomatis transparan/pas
+            if (nama.includes("bca")) {
+                return `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/1920px-Bank_Central_Asia.svg.png" alt="BCA" class="logo-bank-img">`;
+            }
+            if (nama.includes("mandiri")) {
+                return `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/500px-Bank_Mandiri_logo_2016.svg.png?_=20211228163717" alt="Mandiri" class="logo-bank-img">`;
+            }
+            if (nama.includes("bni")) {
+                return `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg/1920px-Bank_Negara_Indonesia_logo_%282004%29.svg.png" alt="BNI" class="logo-bank-img">`;
+            }
+            if (nama.includes("bri")) {
+                return `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Bank-Rakyat-Indonesia-Logo.svg/960px-Bank-Rakyat-Indonesia-Logo.svg.png" alt="BRI" class="logo-bank-img">`;
+            }
+            if (nama.includes("bsi")) {
+                return `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bank_Syariah_Indonesia.svg/1280px-Bank_Syariah_Indonesia.svg.png?_=20210511071837" alt="BSI" class="logo-bank-img">`;
+            }
+            // Fallback berupa ikon bank umum jika nama tidak terdaftar di atas
+            return `<span class="logo-bank generic"><i class="fa-solid fa-credit-card"></i> ${bankName.substring(0, 3)}</span>`;
+        }
+        
         weddingData.gifts.forEach(item => {
+            // 1. JIKA TIPE KADO ADALAH BANK
             if (item.type === "bank") {
                 const formattedNumber = item.accountNumber.replace(/(\d{4})/g, '$1 ').trim();
+                const logoBankHtml = dapatkanLogoBank(item.bankName);
                 
                 container.innerHTML += `
                     <div class="atm-card reveal">
                         <div class="atm-card-header">
-                            <span class="bank-name">${item.bankName}</span>
+                            <div class="bank-info-wrapper">
+                                ${logoBankHtml}
+                            </div>
                             <div class="atm-chip"></div>
                         </div>
                         <div class="atm-card-number">${formattedNumber}</div>
@@ -254,6 +282,33 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                             <button class="btn-copy-atm" onclick="navigator.clipboard.writeText('${item.accountNumber}').then(()=>alert('Nomor rekening berhasil disalin!'))">
                                 <i class="fa-solid fa-copy"></i> Salin
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            // 2. JIKA TIPE KADO ADALAH ALAMAT PENGIRIMAN
+            else if (item.type === "address" || item.type === "alamat") {
+                container.innerHTML += `
+                    <div class="atm-card address-card reveal">
+                        <div class="atm-card-header">
+                            <div class="bank-info-wrapper">
+                                <span class="logo-bank address-badge"><i class="fa-solid fa-truck-fast"></i></span>
+                                <span class="bank-name">KIRIM HADIAH</span>
+                            </div>
+                            <div class="address-icon"><i class="fa-solid fa-box-open"></i></div>
+                        </div>
+                        <div class="address-card-body">
+                            <p class="address-text">${item.address || item.alamat}</p>
+                        </div>
+                        <div class="atm-card-footer">
+                            <div class="atm-card-holder">
+                                <span>PENERIMA (CARDHOLDER)</span>
+                                <strong>${item.accountName || item.namaPenerima}</strong>
+                                ${item.phone ? `<span class="address-phone"><i class="fa-solid fa-phone" style="font-size:9px;"></i> ${item.phone}</span>` : ''}
+                            </div>
+                            <button class="btn-copy-atm" onclick="navigator.clipboard.writeText('${item.address || item.alamat}').then(()=>alert('Alamat pengiriman berhasil disalin!'))">
+                                <i class="fa-solid fa-copy"></i> Salin Alamat
                             </button>
                         </div>
                     </div>
