@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+    <link rel="preload" as="image" href="image/Potrait.webp">
+    <link rel="preload" as="image" href="image/Potrait 2.webp">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="image/Logo.png">
 </head>
@@ -44,7 +45,7 @@
                 <div class="guest-box">
                     <p>
                         <span class="yth-text">Kepada Yth. Bapak/Ibu/Saudara/i</span>
-                        <strong id="guest-name">Tamu Undangan</strong>
+                        <strong id="guest-name" >Tamu Undangan</strong>
                     </p>
                     <button id="openInvitation">✉ BUKA UNDANGAN</button>
                 </div>
@@ -58,8 +59,8 @@
             </audio>
             <button id="musicButton" ><i class="fa-solid fa-compact-disc"></i></button>
 
-            <section class="section intro reveal">
-                <div class="section-content bg-image"> 
+            <section class="section intro">
+                <div class="section-content bg-image reveal"> 
                     <div class="cover-text-group">
                         <p class="small-title">THE WEDDING OF</p>
                         <h1 id="intro-name">Cinta<br>&<br>Nama</h1>
@@ -67,9 +68,10 @@
                     </div>
                 </div> </section>
 
-            <section class="section quote reveal">
-                <div class="section-content bg-plain">
+            <section class="section quote">
+                <div class="section-content bg-plain reveal">
                     <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <h2 class="quote-text">F & H</h2>
                     <p class="quote-text">
                         "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."
                     </p>
@@ -77,81 +79,117 @@
                 </div>
             </section>
 
-            <section class="section couple reveal">
-                <div class="section-content bg-image">
-                    <div class="couple-image">
+            <section class="section couple">
+                <div class="section-content bg-image reveal">
+                    <div class="couple-image reveal">
                         <h2>Couple</h2>
                         <img src="image/Mempelai.png" alt="Foto Pengantin">
                     </div>
 
-                    <div class="person">
+                    <div class="person reveal">
                         <h2 id="bride-nick">Nama</h2>
                         <p id="bride-name">Nama Lengkap</p>
-                        <p id="bride-parent" style="font-size:12px; margin-top:10px;"></p>
+                        <p id="bride-parent" style="font-size:12px; margin-top:10px; color:#556B4F ;"></p>
                     </div>
                     
-                    <p class="and">&</p>
+                    <p class="and" reveal>&</p>
                     
-                    <div class="person">
+                    <div class="person" reveal>
                         <h2 id="groom-nick">Nama</h2>
                         <p id="groom-name">Nama Lengkap</p>
-                        <p id="groom-parent" style="font-size:12px; margin-top:10px;"></p>
+                        <p id="groom-parent" style="font-size:12px; margin-top:10px;color:#556B4F ;"></p>
                     </div>
                 </div>
             </section>
 
-            <section class="section reveal">
-                <div class="section-content bg-plain">
+            <section class="section">
+                <div class="section-content bg-plain reveal">
                     <h2>Save The Date</h2>
-                    <div class="countdown">
+        
+                    <div class="countdown" reveal>
                         <div><strong id="days">00</strong><span>Hari</span></div>
                         <div><strong id="hours">00</strong><span>Jam</span></div>
                         <div><strong id="minutes">00</strong><span>Menit</span></div>
                         <div><strong id="seconds">00</strong><span>Detik</span></div>
                     </div>
-                    <div class="event-box">
-                        <h3 id="event-date">Tanggal Acara</h3>
-                        <p id="event-location-name">Lokasi</p>
-                        <p id="event-address">Alamat</p>
-                        <a id="event-map" href="#" target="_blank" class="btn-map">Lihat Peta</a>
+
+                    <p class="quote-text" reveal>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara pernikahan kami pada:</p>
+
+                    <div class="events-wrapper">
+                        <div class="event-box " reveal>
+                            <h3>Akad Nikah</h3>
+                            <p class="event-time">08.00 WIB - Selesai</p>
+                            <p class="event-date">Minggu, 12 Desember 2026</p>
+                            <p class="event-location-name"><strong>Masjid Jami' / Nama Tempat Akad</strong></p>
+                            <p class="event-address">Jl. Contoh Alamat No. 123, Kota, Provinsi</p>
+                            <a href="LINK_MAPS_AKAD_DISINI" target="_blank" class="btn-map">Lihat Peta</a>
+                        </div>
+
+                        <div class="event-box" reveal>
+                            <h3>Resepsi</h3>
+                            <p class="event-time">11.00 WIB - Selesai</p>
+                            <p class="event-date">Minggu, 12 Desember 2026</p>
+                            <p class="event-location-name"><strong>Nama Gedung / Hotel Resepsi</strong></p>
+                            <p class="event-address">Jl. Contoh Alamat No. 456, Kota, Provinsi</p>
+                            <a href="LINK_MAPS_RESEPSI_DISINI" target="_blank" class="btn-map">Lihat Peta</a>
+                        </div>
                     </div>
                 </div>
             </section>
-
-            <section class="section reveal">
-                <div class="section-content bg-image">
+            <section class="section">
+                <div class="section-content bg-image reveal">
                     <h2>Our Story</h2>
                     <div class="timeline" id="story-container"></div>
                 </div>
             </section>
 
-            <section class="section reveal">
-                <div class="section-content bg-plain">
+            <section class="section">
+                <div class="section-content bg-plain reveal">
                     <h2>Wedding Gift</h2>
                     <p>Bagi keluarga dan sahabat yang ingin memberikan tanda kasih, dapat mengirimkan melalui:</p>
                     <div id="gift-container"></div>
                 </div>
             </section>
 
-            <section class="section wishes reveal">
+            <section class="section wishes">
                 <div class="section-content bg-image">
-                    <h2>Wishes</h2>
-                    <p>Ucapan dan doa untuk kedua mempelai</p>
-                    <button id="toggle-wishes" class="wish-toggle"><i class="fa-solid fa-comments"></i> Lihat Ucapan</button>
                     
-                    <div id="wishes-area" class="hidden">
-                        <form id="wish-form">
-                            <input type="text" id="wish-name" name="nama" placeholder="Nama Anda" required>
-                            <select id="attendance" name="kehadiran" required>
-                                <option value="">Konfirmasi Kehadiran</option>
-                                <option value="Hadir">Hadir</option>
-                                <option value="Tidak Hadir">Tidak Hadir</option>
-                            </select>
-                            <textarea id="wish-message" name="pesan" placeholder="Tuliskan ucapan dan doa" maxlength="300" required></textarea>
-                            <button type="submit" id="submit-wish">Kirim Ucapan</button>
-                        </form>
-                        <div id="wish-list"></div>
+                    <div class="bg-plain reveal">
+                        <h2>Wishes</h2>
+                        <p class="wish-description">Ucapan dan doa untuk kedua mempelai</p>
+                        
+                        <div class="ucapan-header" id="toggle-wishes" style="cursor: pointer; justify-content: center;">
+                            <p class="ucapan-count">
+                                <i class="fa-solid fa-comments"></i> <span id="count-wishes">0</span> Ucapan
+                            </p>
+                        </div>
+                        
+                        <div id="wishes-container" class="hidden">
+                            <form id="rsvp-form" name="submit-to-google-sheet">
+                                <input type="text" id="name" name="nama" placeholder="Tamu Undangan" required>
+                                
+                                <select id="attendance" name="kehadiran" required>
+                                    <option value="" disabled selected>Konfirmasi Kehadiran</option>
+                                    <option value="Hadir">Hadir</option>
+                                    <option value="Tidak Hadir">Tidak Hadir</option>
+                                </select>
+
+                                <select id="jumlah" name="jumlah" required>
+                                    <option value="" disabled selected>Jumlah Kehadiran</option>
+                                    <option value="1">1 Orang</option>
+                                    <option value="2">2 Orang</option>
+                                    <option value="3">3 Orang</option>
+                                    <option value="4">4 Orang</option>
+                                </select>
+
+                                <textarea id="message" name="pesan" rows="4" placeholder="Tulis ucapan" maxlength="300" required></textarea>
+                                <button type="submit" id="btn-submit" class="btn-primary submit-btn">Kirim Ucapan</button>
+                            </form>
+
+                            <div id="wishes-list" class="wishes-list"></div>
+                        </div>
                     </div>
+
                 </div>
             </section>
 
