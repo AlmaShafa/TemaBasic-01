@@ -348,11 +348,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     const attendance = document.getElementById('attendance').value;
                     const message = document.getElementById('message').value;
 
+                    // Icon untuk Hadir (Centang Biru - Like Instagram Verified)
                     let iconHTML = '';
                     if (attendance === 'Hadir') {
-                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 3.775-.63 10.25-8.017 4.368 10.52 4.86 2.06 8.883 4.501-7.752 11.55-2.75-9.916-5.062.058-11.572zM27.02 25.27L18.41 27.85l-1.47-6.35-1.02-8.77 8.59.028 1.52 12.52z"/></svg>`;
+                        iconHTML = `<svg aria-label="Verified Hadir" fill="#1f9cf0" height="16" role="img" viewBox="0 0 24 24" width="16" style="vertical-align: middle;"><path d="M9.62 16.355l-4.336-3.677a.553.553 0 0 0-.846.205.534.534 0 0 0 .011.644l5.392 5.477 8.954-9.112a.534.534 0 0 0 .038-.68.553.553 0 0 0-.848-.035L9.62 16.355Z"/></svg>`;
                     } else {
-                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 3.775-.63 10.25-8.017 4.368 10.52 4.86 2.06 8.883 4.501-7.752 11.55-2.75-9.916-5.062.058-11.572zM27.02 25.27L18.41 27.85l-1.47-6.35-1.02-8.77 8.59.028 1.52 12.52z"/></svg>`;
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 24 24" width="16" style="vertical-align: middle;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>`;
                     }
 
                     const wishItem = document.createElement('div');
@@ -398,11 +399,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 if(countWishes) countWishes.innerText = totalUcapan;
 
                 data.forEach(item => {
+                    // Icon untuk Hadir (Centang Biru)
                     let iconHTML = '';
                     if (item.kehadiran === 'Hadir') {
-                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 3.775-.63 10.25-8.017 4.368 10.52 4.86 2.06 8.883 4.501-7.752 11.55-2.75-9.916-5.062.058-11.572zM27.02 25.27L18.41 27.85l-1.47-6.35-1.02-8.77 8.59.028 1.52 12.52z"/></svg>`;
+                        iconHTML = `<svg aria-label="Verified Hadir" fill="#1f9cf0" height="16" role="img" viewBox="0 0 24 24" width="16" style="vertical-align: middle;"><path d="M9.62 16.355l-4.336-3.677a.553.553 0 0 0-.846.205.534.534 0 0 0 .011.644l5.392 5.477 8.954-9.112a.534.534 0 0 0 .038-.68.553.553 0 0 0-.848-.035L9.62 16.355Z"/></svg>`;
                     } else {
-                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 3.775-.63 10.25-8.017 4.368 10.52 4.86 2.06 8.883 4.501-7.752 11.55-2.75-9.916-5.062.058-11.572zM27.02 25.27L18.41 27.85l-1.47-6.35-1.02-8.77 8.59.028 1.52 12.52z"/></svg>`;
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 24 24" width="16" style="vertical-align: middle;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>`;
                     }
 
                     const wishItem = document.createElement('div');
