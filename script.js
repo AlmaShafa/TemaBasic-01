@@ -348,12 +348,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     const attendance = document.getElementById('attendance').value;
                     const message = document.getElementById('message').value;
 
-                    // Icon untuk Hadir (Centang Biru - Like Instagram Verified)
+                    // Logika SVG Badge Verified
                     let iconHTML = '';
                     if (attendance === 'Hadir') {
-                        iconHTML = `<svg aria-label="Verified Hadir" fill="#1f9cf0" height="16" role="img" viewBox="0 0 24 24" width="16" style="vertical-align: middle;"><path d="M9.62 16.355l-4.336-3.677a.553.553 0 0 0-.846.205.534.534 0 0 0 .011.644l5.392 5.477 8.954-9.112a.534.534 0 0 0 .038-.68.553.553 0 0 0-.848-.035L9.62 16.355Z"/></svg>`;
+                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
                     } else {
-                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 24 24" width="16" style="vertical-align: middle;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>`;
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm6.202 10.706 2.2 2.2-6.2 6.2 6.2 6.2-2.2 2.2-6.2-6.2-6.2 6.2-2.2-2.2 6.2-6.2-6.2-6.2 2.2-2.2 6.2 6.2 6.2-6.2Z" fill-rule="evenodd"></path></svg>`;
                     }
 
                     const wishItem = document.createElement('div');
@@ -399,12 +399,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 if(countWishes) countWishes.innerText = totalUcapan;
 
                 data.forEach(item => {
-                    // Icon untuk Hadir (Centang Biru)
                     let iconHTML = '';
                     if (item.kehadiran === 'Hadir') {
-                        iconHTML = `<svg aria-label="Verified Hadir" fill="#1f9cf0" height="16" role="img" viewBox="0 0 24 24" width="16" style="vertical-align: middle;"><path d="M9.62 16.355l-4.336-3.677a.553.553 0 0 0-.846.205.534.534 0 0 0 .011.644l5.392 5.477 8.954-9.112a.534.534 0 0 0 .038-.68.553.553 0 0 0-.848-.035L9.62 16.355Z"/></svg>`;
+                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
                     } else {
-                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 24 24" width="16" style="vertical-align: middle;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>`;
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm6.202 10.706 2.2 2.2-6.2 6.2 6.2 6.2-2.2 2.2-6.2-6.2-6.2 6.2-2.2-2.2 6.2-6.2-6.2-6.2 2.2-2.2 6.2 6.2 6.2-6.2Z" fill-rule="evenodd"></path></svg>`;
                     }
 
                     const wishItem = document.createElement('div');
