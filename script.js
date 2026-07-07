@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     loading.style.opacity = "0";
                     setTimeout(() => {
                         loading.remove();
-                    }, 800);
+                    }, 100);
                 }
-            }, 1200);
+            }, 0);
 
             // Inisialisasi Fungsi
             loadWeddingData();
@@ -71,8 +71,11 @@ if (openButton) {
         cover.style.opacity = "0";
 
         setTimeout(() => {
+
             cover.style.display = "none";
             main.classList.remove("hidden");
+
+            loadWishes();
 
             if (music) {
                 music.play()
@@ -84,7 +87,8 @@ if (openButton) {
                     });
             }
 
-        }, 200);
+        }, 100);
+
     });
 }
 
@@ -261,13 +265,11 @@ if (music) {
     }
 
     /* =========================
-       WISHES (LOCAL UPDATE & SUBMIT)
+       WISHES (Hanya Untuk Buka Tutup Form)
     ========================= */
     function setupWish() {
         const toggleBtn = document.getElementById("toggle-wishes");
-        const wishesArea = document.getElementById("wishes-area");
-        const form = document.getElementById("wish-form");
-        const wishList = document.getElementById("wish-list");
+        const wishesArea = document.getElementById("wishes-container");
 
         // Toggle buka/tutup form
         if(toggleBtn && wishesArea) {
@@ -275,60 +277,160 @@ if (music) {
                 wishesArea.classList.toggle("hidden");
             });
         }
-
-        // Handle Submit
-        if(form) {
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-
-                // 1. Ambil nilai dari input
-                const name = document.getElementById("wish-name").value;
-                const message = document.getElementById("wish-message").value;
-
-                // 2. Buat elemen HTML baru untuk ucapan
-                const newWish = document.createElement("div");
-                newWish.className = "wish-item reveal active";
-                newWish.innerHTML = `
-                    <strong style="display:block; color:var(--sage-dark);">${name}</strong>
-                    <p style="font-size:14px; margin-top:5px;">${message}</p>
-                `;
-
-                // 3. Masukkan ke daftar (prepend agar muncul di paling atas)
-                wishList.prepend(newWish);
-
-                // 4. (Opsional) Kirim ke server jika Anda punya Google Script
-                // const btn = document.getElementById("submit-wish");
-                // btn.innerHTML = "Mengirim...";
-                // fetch(weddingData.wishes.scriptURL, { method: "POST", body: new FormData(form) })
-                // .then(() => btn.innerHTML = "Terkirim")
-                // .catch(() => btn.innerHTML = "Gagal");
-
-                // 5. Reset form
-                form.reset();
-                alert("Terima kasih atas ucapannya!");
-            });
-        }
+        // Catatan: Kode Submit form lokal versi lama DIHAPUS agar tidak bentrok 
+        // dengan kode Google Sheets di bawah.
     }
 
     /* =========================
        REVEAL ANIMATION (SCROLL FADE IN & FADE OUT)
     ========================= */
     function setupIntersectionObserver() {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Muncul (Fade In) saat elemen terlihat di layar
-                    entry.target.classList.add("active");
-                } else {
-                    // Menghilang (Fade Out) saat elemen keluar dari layar
-                    entry.target.classList.remove("active");
-                }
-            });
-        }, { threshold: 0.15 }); // 0.15 artinya efek terpicu saat 15% bagian kartu masuk layar
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Muncul (Fade In) saat elemen terlihat di layar
+                entry.target.classList.add("active");
+                
+                // OPSIONAL: Hentikan observasi pada elemen ini agar tidak boros baterai/RAM
+                observer.unobserve(entry.target); 
+            }
+            // Bagian ELSE (remove active) DIHAPUS agar tidak memicu bug getar balik
+        });
+    }, { 
+        threshold: 0.1, // Diturunkan sedikit ke 10% agar lebih cepat terpicu aman
+        rootMargin: "0px 0px -20px 0px" // Memberikan jarak aman di batas bawah layar
+    }); 
 
-        // Terapkan ke semua elemen yang memiliki class .reveal
-        document.querySelectorAll(".reveal").forEach(el => {
-            observer.observe(el);
+    // Terapkan ke semua elemen yang memiliki class .reveal
+    document.querySelectorAll(".reveal").forEach(el => {
+        observer.observe(el);
+    });
+    }
+/* =========================
+       5. RSVP Form to Google Sheets (DIPINDAHKAN KE DALAM SINI)
+    ========================= */
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxVmci1q0Jvqo3euxRq2rvuLQrf3jXgiBqI42mhISzcTw50DAhlIFOc2KhZWAhXJ0Ck/exec'; 
+    
+    // Ambil form berdasarkan atribut name="submit-to-google-sheet"
+    const rsvpForm = document.forms['submit-to-google-sheet'];
+    const btnSubmit = document.getElementById('btn-submit');
+    const wishesList = document.getElementById('wishes-list');
+    const countWishes = document.getElementById('count-wishes'); 
+    
+    const attendanceSelect = document.getElementById('attendance');
+    const jumlahSelect = document.getElementById('jumlah');
+
+    if (attendanceSelect && jumlahSelect) {
+        attendanceSelect.addEventListener('change', () => {
+            if (attendanceSelect.value === 'Tidak Hadir') {
+                jumlahSelect.style.display = 'none';
+                jumlahSelect.removeAttribute('required');
+                jumlahSelect.innerHTML = `<option value="0" selected>0</option>`; 
+            } else {
+                jumlahSelect.style.display = 'block';
+                jumlahSelect.setAttribute('required', 'true');
+                jumlahSelect.innerHTML = `
+                    <option value="" disabled selected>Jumlah Kehadiran</option>
+                    <option value="1">1 Orang</option>
+                    <option value="2">2 Orang</option>
+                    <option value="3">3 Orang</option>
+                    <option value="4">4 Orang</option>
+                `;
+            }
         });
     }
-});
+
+    let totalUcapan = 0;
+
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', e => {
+            e.preventDefault(); 
+            
+            btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+            btnSubmit.disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(rsvpForm)})
+                .then(response => {
+                    btnSubmit.innerHTML = 'Kirim Ucapan';
+                    btnSubmit.disabled = false;
+
+                    const name = document.getElementById('name').value;
+                    const attendance = document.getElementById('attendance').value;
+                    const message = document.getElementById('message').value;
+
+                    // Logika SVG Badge Verified
+                    let iconHTML = '';
+                    if (attendance === 'Hadir') {
+                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
+                    } else {
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm6.202 10.706 2.2 2.2-6.2 6.2 6.2 6.2-2.2 2.2-6.2-6.2-6.2 6.2-2.2-2.2 6.2-6.2-6.2-6.2 2.2-2.2 6.2 6.2 6.2-6.2Z" fill-rule="evenodd"></path></svg>`;
+                    }
+
+                    const wishItem = document.createElement('div');
+                    wishItem.classList.add('wish-item');
+                    wishItem.innerHTML = `<h4>${name} <span style="margin-left: 5px;">${iconHTML}</span></h4><p>${message}</p>`;
+
+                    // Posisikan di bagian paling atas kolom ucapan
+                    if(wishesList) wishesList.insertBefore(wishItem, wishesList.firstChild);
+                    
+                    totalUcapan++;
+                    // Cek jika ID hitungan ada di HTML, baru ubah angkanya (mencegah error)
+                    if(countWishes) countWishes.innerText = totalUcapan;
+                    
+                    rsvpForm.reset();
+                    
+                    if(jumlahSelect) {
+                        jumlahSelect.style.display = 'block';
+                        jumlahSelect.setAttribute('required', 'true');
+                    }
+
+                    // Tampilkan pesan berhasil ke tamu
+                    alert('Terima kasih! Konfirmasi kehadiran dan ucapan Anda telah terkirim.');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Gagal mengirim ucapan. Pastikan koneksi internet stabil.');
+                    btnSubmit.innerHTML = 'Kirim Ucapan';
+                    btnSubmit.disabled = false;
+                });
+        });
+    }
+
+    // --- 6. Mengambil Ucapan Saat Web Dibuka (doGet) ---
+    function loadWishes() {
+        if(!wishesList) return; // Mencegah error jika div tidak ditemukan
+        
+        wishesList.innerHTML = '<p style="text-align:center; font-size:12px;"><i class="fa-solid fa-spinner fa-spin"></i> Memuat ucapan...</p>';
+        
+        fetch(scriptURL) 
+            .then(response => response.json())
+            .then(data => {
+                wishesList.innerHTML = ''; 
+                totalUcapan = data.length;
+                if(countWishes) countWishes.innerText = totalUcapan;
+
+                data.forEach(item => {
+                    let iconHTML = '';
+                    if (item.kehadiran === 'Hadir') {
+                        iconHTML = `<svg aria-label="Hadir" fill="#019b41" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
+                    } else {
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm6.202 10.706 2.2 2.2-6.2 6.2 6.2 6.2-2.2 2.2-6.2-6.2-6.2 6.2-2.2-2.2 6.2-6.2-6.2-6.2 2.2-2.2 6.2 6.2 6.2-6.2Z" fill-rule="evenodd"></path></svg>`;
+                    }
+
+                    const wishItem = document.createElement('div');
+                    wishItem.classList.add('wish-item');
+                    wishItem.innerHTML = `<h4>${item.nama} <span style="margin-left: 5px;">${iconHTML}</span></h4><p>${item.pesan}</p>`;
+                    
+                    wishesList.appendChild(wishItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error memuat ucapan:', error);
+                wishesList.innerHTML = '<p style="text-align:center; font-size:12px; color:red;">Gagal memuat daftar ucapan dari server.</p>';
+            });
+    }
+
+    // Panggil fungsi mengambil ucapan otomatis
+    loadWishes();
+
+}); // <--- PENUTUP DOMContentLoaded HARUS BERADA DI BARIS PALING BAWAH INI
