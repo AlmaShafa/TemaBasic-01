@@ -168,7 +168,7 @@ main { width: 100%; }
     border: 1px solid #ffffff80;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .guest-box button, #submit-wish, .wish-toggle, .btn-map {
@@ -194,7 +194,7 @@ main { width: 100%; }
 .yth-text {
     display: block;
     margin-bottom: 15px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #guest-name {
@@ -205,7 +205,7 @@ main { width: 100%; }
 
 @media (max-width: 768px) {
     #guest-name {
-        font-size: 18px;
+        font-size: 19px;
     }
 }
 
@@ -493,8 +493,8 @@ main { width: 100%; }
 
 /* CHIP ATM */
 .atm-chip {
-    width: 28px; /* DIPERKECIL dari 36px */
-    height: 20px; /* DIPERKECIL dari 26px */
+    width: 45px; /* DIPERKECIL dari 36px */
+    height: 35px; /* DIPERKECIL dari 26px */
     background: linear-gradient(135deg, #d4af37 0%, #f9e8a2 100%);
     border-radius: 4px;
     position: relative;
