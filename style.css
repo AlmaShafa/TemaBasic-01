@@ -80,8 +80,11 @@ body {
     RIGHT INVITATION (MOBILE)
 ========================= */
 .invitation-container {
-    width: 420px;
-    flex-shrink: 0;
+    /* UBAH BAGIAN INI */
+    width: 30%;               /* Mengisi penuh sisa 30% ruang di kanan */
+    min-width: 320px;          /* Batas minimum agar tidak terlalu kekecilan di layar tablet */
+    
+    /* TETAPKAN SETELAN AWAL ANDA (AMAN & BISA SCROLL) */
     height: 100dvh;
     overflow-y: auto;
     position: relative;
