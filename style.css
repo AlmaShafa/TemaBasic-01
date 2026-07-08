@@ -83,7 +83,7 @@ body {
     /* UBAH BAGIAN INI */
     width: 460px;               /* Mengisi penuh sisa 30% ruang di kanan */    
     /* TETAPKAN SETELAN AWAL ANDA (AMAN & BISA SCROLL) */
-    height: 100%;
+    height: 100dvh;
     overflow-y: auto;
     position: relative;
     
@@ -91,7 +91,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
     
     z-index: 1;
 }
@@ -245,7 +245,7 @@ main { width: 100%; }
     background-image: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)), url('image/Hijau.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll;
+    background-attachment: fixed;
     min-height: 50vh;
 }
 
@@ -688,7 +688,7 @@ main { width: 100%; }
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('image/Hijau.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     
     min-height: 100vh;
@@ -898,7 +898,7 @@ main { width: 100%; }
 }
 
 .intro .section-content {
-    min-height: 100%;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
