@@ -731,11 +731,33 @@ main { width: 100%; }
 
 #closing-names {
     font-family: var(--font-script);
-    font-size: 40px;
+    /* clamp membuat font berukuran 32px di HP dan maksimal 48px di desktop */
+    font-size: clamp(32px, 7vw, 48px); 
     font-weight: 400;
     line-height: 1.5;
     color: #526b55;
-    margin-top: 10px;
+    margin-top: 15px;
+    
+    /* Mengatur susunan kesamping (horizontal) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;          /* Jarak horizontal antar nama dan simbol & */
+    white-space: nowrap; /* Mengunci teks agar haram hukumnya turun kebawah */
+    width: 100%;
+}
+/* Mengatur jarak khusus simbol & agar lebih manis */
+#closing-names .ampersand {
+    font-size: 0.8em;
+    margin: 0 4px;
+}
+/* Tambahan perbaikan untuk teks "KAMI YANG BERBAHAGIA" */
+.closing-sub {
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #344934;
+    margin-top: 20px;
 }
 
 .closing footer {
