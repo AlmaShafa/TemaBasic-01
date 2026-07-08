@@ -887,7 +887,10 @@ main { width: 100%; }
     font-size: 14px;
     letter-spacing: 2px;
     opacity: 1;
-    color: #344934;
+    
+    /* GANTI DI SINI */
+    color: #344934;                 /* Silakan ubah kode hex warna ini (misal: #556B4F atau var(--sage-dark)) */
+    font-family: var(--font-body); /* Silakan ubah variabel font ini (misal: var(--font-heading) atau var(--font-script)) */
 }
 
 .intro .bg-image {
