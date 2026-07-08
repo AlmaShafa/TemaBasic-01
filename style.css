@@ -80,8 +80,8 @@ body {
    RIGHT INVITATION (MOBILE)
 ========================= */
 .invitation-container {
-    width: 420px;
-    flex-shrink: 0;
+    flex: 1; /* Mengisi sisa ruang (30%) secara dinamis */
+    /* width: 420px; <-- Hapus atau komentari ini */
     height: 100dvh;
     overflow-y: auto;
     position: relative;
