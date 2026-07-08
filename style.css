@@ -770,6 +770,13 @@ main { width: 100%; }
     font-family: var(--font-heading)
 }
 
+.ty-footer h3{
+    font-size: 17px;
+    letter-spacing: 2px;
+    color: #344934;
+    font-family: var(--font-body);
+}
+
 /* =========================
    OTHERS (LOADING & MUSIC)
 ========================= */
@@ -881,16 +888,6 @@ main { width: 100%; }
     color: var(--sage-dark);
     font-size: 13px;
     letter-spacing: 2px;
-}
-
-.ty-footer h3{
-    font-size: 17px;
-    letter-spacing: 2px;
-    opacity: 1;
-    
-    /* GANTI DI SINI */
-    color: #344934;                 /* Silakan ubah kode hex warna ini (misal: #556B4F atau var(--sage-dark)) */
-    font-family: var(--font-body); /* Silakan ubah variabel font ini (misal: var(--font-heading) atau var(--font-script)) */
 }
 
 .intro .bg-image {
