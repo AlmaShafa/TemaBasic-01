@@ -53,8 +53,8 @@ body {
     DESKTOP LEFT PANEL
 ========================= */
 .desktop-panel {
-    flex: 0 0 70%;   /* Panel kiri kembali 70% */
-    max-width: 70%;
+    flex: 1; 
+    max-width: calc(100% - 460px); /* 460px adalah lebar panel kanan Anda */
     height: 100vh;
     background: linear-gradient(rgba(141, 140, 140, 0.226), rgba(0, 0, 0, 0.082)), var(--bg-desktop);
     background-size: cover;
@@ -81,9 +81,7 @@ body {
 ========================= */
 .invitation-container {
     /* UBAH BAGIAN INI */
-    width: 30%;               /* Mengisi penuh sisa 30% ruang di kanan */
-    min-width: 320px;          /* Batas minimum agar tidak terlalu kekecilan di layar tablet */
-    
+    width: 460px;               /* Mengisi penuh sisa 30% ruang di kanan */    
     /* TETAPKAN SETELAN AWAL ANDA (AMAN & BISA SCROLL) */
     height: 100dvh;
     overflow-y: auto;
