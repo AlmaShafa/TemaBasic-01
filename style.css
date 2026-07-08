@@ -245,7 +245,7 @@ main { width: 100%; }
     background-image: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)), url('image/Hijau.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     min-height: 50vh;
 }
 
@@ -688,7 +688,7 @@ main { width: 100%; }
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('image/Hijau.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-repeat: no-repeat;
     
     min-height: 100vh;
@@ -912,14 +912,14 @@ main { width: 100%; }
     background-image: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)), url('image/Potrait\ 2.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
 }
 
 .wishes .bg-image {
     background-image: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)), url('image/Hijau.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     min-height: 35vh;
 }
 
@@ -935,7 +935,7 @@ main { width: 100%; }
     background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('image/Hijau.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 15px;
