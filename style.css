@@ -732,7 +732,7 @@ main { width: 100%; }
 #closing-names {
     font-family: var(--font-script);
     /* clamp membuat font berukuran 32px di HP dan maksimal 48px di desktop */
-    font-size: clamp(32px, 7vw, 48px); 
+    font-size: clamp(38px, 7vw, 48px); 
     font-weight: 400;
     line-height: 1.5;
     color: #526b55;
