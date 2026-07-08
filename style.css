@@ -53,8 +53,7 @@ body {
    DESKTOP LEFT PANEL
 ========================= */
 .desktop-panel {
-    flex: 0 0 70%;   /* Panel kiri 70% */
-    max-width: 70%;
+    flex: 1;    /* Mengisi seluruh sisa ruang layar secara otomatis */
     height: 100vh;
     background: linear-gradient(rgba(141, 140, 140, 0.226), rgba(0, 0, 0, 0.082)), var(--bg-desktop);
     background-size: cover;
@@ -80,18 +79,17 @@ body {
    RIGHT INVITATION (MOBILE)
 ========================= */
 .invitation-container {
-    flex: 1; /* Mengisi sisa ruang (30%) secara dinamis */
-    /* width: 420px; <-- Hapus atau komentari ini */
+    width: 420px;
+    flex-shrink: 0; /* Mencegah panel kanan menyusut */
     height: 100dvh;
     overflow-y: auto;
     position: relative;
     
-    /* Tambahkan pengaturan background langsung di sini */
     background-image: var(--bg-mobile);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll; /* scroll berfungsi menahan gambar tetap diam di tempat saat tamu men-scroll konten di dalamnya */
+    background-attachment: scroll;
     
     z-index: 1;
 }
@@ -105,9 +103,10 @@ body {
 
 main { 
     width: 100%; 
-    display: flex; /* WAJIB ada agar panel kiri dan kanan bisa sejajar dan membagi ruang */
-    flex-direction: row; 
-    overflow: hidden; /* Mencegah scrollbar horizontal yang mengganggu */
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* =========================
