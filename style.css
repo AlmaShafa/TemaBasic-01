@@ -83,7 +83,7 @@ body {
     /* UBAH BAGIAN INI */
     width: 460px;               /* Mengisi penuh sisa 30% ruang di kanan */    
     /* TETAPKAN SETELAN AWAL ANDA (AMAN & BISA SCROLL) */
-    height: 100dvh;
+    height: 100%;
     overflow-y: auto;
     position: relative;
     
@@ -898,7 +898,7 @@ main { width: 100%; }
 }
 
 .intro .section-content {
-    min-height: 100dvh;
+    min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
