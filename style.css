@@ -50,10 +50,11 @@ body {
 .hidden { display: none !important; }
 
 /* =========================
-   DESKTOP LEFT PANEL
+    DESKTOP LEFT PANEL
 ========================= */
 .desktop-panel {
-    flex: 1;    /* Mengisi seluruh sisa ruang layar secara otomatis */
+    flex: 0 0 70%;   /* Panel kiri kembali 70% */
+    max-width: 70%;
     height: 100vh;
     background: linear-gradient(rgba(141, 140, 140, 0.226), rgba(0, 0, 0, 0.082)), var(--bg-desktop);
     background-size: cover;
@@ -76,27 +77,22 @@ body {
 .desktop-overlay span { letter-spacing: 3px; }
 
 /* =========================
-   RIGHT INVITATION (MOBILE)
+    RIGHT INVITATION (MOBILE)
 ========================= */
 .invitation-container {
     width: 420px;
-    flex-shrink: 0; /* Mengunci lebar agar tetap 420px */
-    height: 100vh; /* Menggunakan 100vh full */
-    
-    /* SOLUSI UTAMA: Mengembalikan sifat isi kontainer agar normal ke bawah */
-    display: block; 
-    overflow-y: auto; /* Mengaktifkan kembali scroll vertikal */
-    overflow-x: hidden; /* Mencegah konten meluber ke kanan */
-    
+    flex-shrink: 0;
+    height: 100dvh;
+    overflow-y: auto;
     position: relative;
-    z-index: 1;
     
-    /* Pengaturan Background */
     background-image: var(--bg-mobile);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll; 
+    background-attachment: scroll;
+    
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -106,13 +102,8 @@ body {
     }
 }
 
-main { 
-    width: 100%; 
-    height: 100vh;
-    display: flex; /* Membagi kiri dan kanan */
-    flex-direction: row; 
-    overflow: hidden; /* Mengunci layar utama agar tidak ada scrollbar ganda */
-}
+/* Kembali ke setelan awal Anda */
+main { width: 100%; }
 
 /* =========================
    COVER
