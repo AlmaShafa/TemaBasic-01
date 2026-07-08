@@ -103,7 +103,12 @@ body {
     }
 }
 
-main { width: 100%; }
+main { 
+    width: 100%; 
+    display: flex; /* WAJIB ada agar panel kiri dan kanan bisa sejajar dan membagi ruang */
+    flex-direction: row; 
+    overflow: hidden; /* Mencegah scrollbar horizontal yang mengganggu */
+}
 
 /* =========================
    COVER
