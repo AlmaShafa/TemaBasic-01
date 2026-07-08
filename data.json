@@ -56,6 +56,12 @@
       "bankName": "BCA",
       "accountNumber": "0987654321",
       "accountName": "Hamzah Hamid"
+    },
+    {
+      "type": "address",
+      "address": "Jl. Kenangan indah No 26 - Jakarta",
+      "accountName": "Fatimah Az Zahra",
+      "phone": "081234567890"
     }
   ],
   "wishes": {
