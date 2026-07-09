@@ -126,13 +126,17 @@ main { width: 100%; }
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* UBAH: Menggunakan center agar semua elemen kumpul di tengah secara vertikal */
+    justify-content: center; 
+    align-items: center;
     padding: 40px 0;
+    box-sizing: border-box;
 }
 
 .cover-text-group {
-    margin-top: 200px;
-    margin-bottom: auto;
+    /* UBAH: Menghilangkan margin kaku 200px agar posisi teks otomatis pas di tengah agak ke bawah */
+    margin-top: 40px; 
+    margin-bottom: 20px;
     color: #556B4F;
     text-align: center !important;
 }
@@ -160,12 +164,14 @@ main { width: 100%; }
 }
 
 .guest-box {
+    /* UBAH: Beri jarak otomatis di atasnya agar posisinya seimbang di bawah teks */
     margin-top: 20px;
     padding: 15px;
     background: #ffffffab;
     border-radius: 25px;
     border: 1px solid #ffffff80;
     width: 100%;
+    max-width: 400px; /* TAMBAHAN: Mencegah kotak tamu terlalu melar melebar di desktop */
     box-sizing: border-box;
     margin-bottom: 20px;
 }
