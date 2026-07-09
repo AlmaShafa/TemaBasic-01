@@ -305,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div class="atm-card-holder">
                                 <span>PENERIMA (CARDHOLDER)</span>
                                 <strong>${item.accountName || item.namaPenerima}</strong>
-                                ${item.phone ? `<span class="address-phone"><i class="fa-solid fa-phone" style="font-size:9px;"></i> ${item.phone}</span>` : ''}
+                                ${item.phone ? `<span class="address-phone" style="font-size: 14px; margin-top: 8px;"><i class="fa-solid fa-phone" style="font-size: 12px;"></i> ${item.phone}</span>` : ''}
                             </div>
                             <button class="btn-copy-atm" onclick="navigator.clipboard.writeText('${item.address || item.alamat}').then(()=>alert('Alamat pengiriman berhasil disalin!'))">
                                 <i class="fa-solid fa-copy"></i> Salin Alamat
