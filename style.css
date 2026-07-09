@@ -129,8 +129,8 @@ main { width: 100%; }
 }
 
 .cover-text-group {
-    /* DIPERBAIKI: Menggunakan margin auto agar otomatis berada di tengah */
     margin: auto 0; 
+    transform: translateY(70px); /* Ubah angka 70px semakin besar untuk semakin turun */
     color: #556B4F;
     text-align: center !important;
 }
