@@ -771,8 +771,8 @@ main { width: 100%; }
 }
 
 .ty-footer h3{
-    font-size: 17px;
-    letter-spacing: 2px;
+    font-size: 16px;
+    letter-spacing: 3px;
     color: #344934;
     font-family: var(--font-body);
 }
