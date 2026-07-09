@@ -704,6 +704,7 @@ main { width: 100%; }
     margin-top: 0;
     
     display: flex;
+    flex-direction: column; /* Ditambahkan agar konten tersusun rapi ke bawah */
     justify-content: center;
     align-items: center;
     
@@ -740,27 +741,25 @@ main { width: 100%; }
 
 #closing-names {
     font-family: var(--font-script);
-    /* clamp membuat font berukuran 32px di HP dan maksimal 48px di desktop */
     font-size: clamp(38px, 7vw, 48px); 
     font-weight: 400;
     line-height: 1.5;
     color: #526b55;
     margin-top: 15px;
     
-    /* Mengatur susunan kesamping (horizontal) */
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;          /* Jarak horizontal antar nama dan simbol & */
-    white-space: nowrap; /* Mengunci teks agar haram hukumnya turun kebawah */
+    gap: 10px;          
+    white-space: nowrap; 
     width: 100%;
 }
-/* Mengatur jarak khusus simbol & agar lebih manis */
+
 #closing-names .ampersand {
     font-size: 0.8em;
     margin: 0 4px;
 }
-/* Tambahan perbaikan untuk teks "KAMI YANG BERBAHAGIA" */
+
 .closing-sub {
     font-family: "Montserrat", sans-serif;
     font-size: 13px;
@@ -769,14 +768,14 @@ main { width: 100%; }
     margin-top: 20px;
 }
 
-.closing  {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+/* DI SINI PERBAIKANNYA: 
+   Nama class duplikat .closing yang merusak layout 
+   sudah dihapus & diganti menjadi .ty-footer agar normal kembali */
+.ty-footer  {
+    margin-top: 30px;
     width: 100%;
     color: #344934;
-    font-family: var(--font-heading)
+    font-family: var(--font-heading);
 }
 
 .ty-footer h3{
