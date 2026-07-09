@@ -566,6 +566,8 @@ main { width: 100%; }
     font-weight: 600;
     backdrop-filter: blur(5px);
     transition: all 0.3s;
+    display: block;       /* Mengubahnya jadi block agar bisa dipasang margin */
+    margin-left: auto;    /* Memaksa tombol mendorong dirinya mentok ke kanan */
 }
 
 .btn-copy-atm:hover {
