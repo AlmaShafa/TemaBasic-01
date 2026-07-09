@@ -1138,15 +1138,3 @@ main { width: 100%; }
     padding: 4px 8px;
     border-radius: 4px;
 }
-
-@media (max-width: 480px) {
-    .intro .section-content {
-        padding: 20px 15px !important;
-        min-height: auto !important; 
-    }
-
-    .intro h1 {
-        font-size: 34px !important; 
-        margin: 5px 0 !important;
-    }
-}
