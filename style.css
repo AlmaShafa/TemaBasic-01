@@ -132,6 +132,7 @@ main { width: 100%; }
     margin: auto 0; 
     color: #556B4F;
     text-align: center !important;
+    transform: translateY(-120px); /* Ubah angka ini untuk mengatur turunnya */
 }
 
 .cover-text-down {
@@ -440,8 +441,8 @@ main { width: 100%; }
 }
 
 .atm-card {
-    background: linear-gradient(245deg, var(--sage-dark) 0%, #cbd9c7 100%);
-    color: #ffffff;
+    background: linear-gradient(var(--card-bg));
+    color: #556B4F;
     padding: 15px;
     border-radius: 12px; 
     position: relative;
@@ -529,20 +530,21 @@ main { width: 100%; }
     font-size: 8px; 
     letter-spacing: 1px;
     opacity: 0.6;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
 /* NAMA PEMILIK REKENING */
 .atm-card-holder strong {
-    font-size: 11px; 
+    font-size: 14px; 
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-bottom: 3px;
 }
 
 /* TOMBOL SALIN */
 .btn-copy-atm {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #556B4F;
+    border: 1px solid #ffffff4d;
     color: white;
     padding: 4px 10px; 
     border-radius: 20px;
@@ -592,7 +594,7 @@ main { width: 100%; }
     padding: 50px 0;
     text-align: center;
     margin: 0;
-    background-color: rgba(232, 239, 226, 0.85);
+    background-color: rgb(232, 239, 226);
 }
 
 .wishes h2 {
@@ -625,7 +627,7 @@ main { width: 100%; }
 }
 
 .wish-toggle:hover {
-    transform: translateY(-2px);
+    transform: translateY(0px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
@@ -708,6 +710,7 @@ main { width: 100%; }
     color: #526b55;
     position: relative;
     z-index: 2;
+    transform: translateY(-100px); /* Semakin besar angka minusnya, semakin ke atas posisinya */
 }
 
 .closing h3 {
@@ -757,19 +760,21 @@ main { width: 100%; }
     margin-top: 20px;
 }
 
-.ty-footer  {
-    /* DIPERBAIKI: Mendorong footer ini otomatis menempel di dasar bawah layar */
-    margin-top: auto;
-    margin-bottom: 20px;
+.ty-footer {
+    position: absolute;
+    bottom: 20px; /* Jarak dari ujung paling bawah layar */
+    left: 0;
     width: 100%;
-    color: #344934;
+    margin: 0; /* Menghapus margin yang tidak perlu */
+    color: #050505;
     font-family: var(--font-heading);
+    text-align: center;
 }
 
-.ty-footer h3{
-    font-size: 16px;
+.ty-footer h3 {
+    font-size: 13px;
     letter-spacing: 3px;
-    color: #5a725c;
+    color: #0000007c;
     font-family: var(--font-body);
 }
 
@@ -900,12 +905,11 @@ main { width: 100%; }
 }
 
 .wishes .bg-image {
-    min-height: 35vh;
+    min-height: auto !important;
     display: flex;
+    flex-direction: column; /* Memastikan judul dan tombol rapi tersusun atas-bawah */
     justify-content: center;
-    align-items: flex-start;
-    padding: 0;
-    width: 100%;
+    align-items: center;
 }
 
 .wish-description {
@@ -950,7 +954,7 @@ main { width: 100%; }
 }
 
 .event-box {
-    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('image/Hijau.webp');
+    background: linear-gradient(rgba(0, 0, 0, 0.055), rgba(44, 77, 48, 0.15)), var(--card-bg);
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
@@ -1061,10 +1065,6 @@ main { width: 100%; }
     transition: all 0.3s ease;
 }
 
-.ucapan-header:hover {
-    background-color: rgba(82, 107, 85, 1);
-}
-
 .ucapan-count {
     margin: 5%;
     font-size: 14px;
@@ -1072,6 +1072,10 @@ main { width: 100%; }
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.ucapan-header:hover {
+    background-color: #526b55;
 }
 
 /* RESPONSIVE IMPROVEMENTS */
