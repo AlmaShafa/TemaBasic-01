@@ -519,7 +519,7 @@ main { width: 100%; }
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
 }
 
-.atm-card-footer {
+.atm-card- {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -759,7 +759,7 @@ main { width: 100%; }
     margin-top: 20px;
 }
 
-.closing footer {
+.closing  {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -772,7 +772,7 @@ main { width: 100%; }
 .ty-footer h3{
     font-size: 16px;
     letter-spacing: 3px;
-    color: #344934;
+    color: #5a725c;
     font-family: var(--font-body);
 }
 
