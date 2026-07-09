@@ -214,7 +214,7 @@ main { width: 100%; }
     }
     /* TAMBAHAN: Mengatur ulang space khusus mobile jika dirasa kurang pas */
     .cover-text-group {
-        margin-top: auto; /* Mendorong teks sedikit ke bawah mengikuti space mobile */
+        margin-top: -40%; /* Mendorong teks sedikit ke bawah mengikuti space mobile */
     }
 }
 
