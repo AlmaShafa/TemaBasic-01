@@ -26,7 +26,6 @@
     --content-max-width: 700px; /* Batasan lebar di layar desktop/laptop */
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -50,7 +49,7 @@ body {
 .hidden { display: none !important; }
 
 /* =========================
-    DESKTOP LEFT PANEL
+   DESKTOP LEFT PANEL
 ========================= */
 .desktop-panel {
     flex: 1; 
@@ -77,12 +76,10 @@ body {
 .desktop-overlay span { letter-spacing: 3px; }
 
 /* =========================
-    RIGHT INVITATION (MOBILE)
+   RIGHT INVITATION (MOBILE)
 ========================= */
 .invitation-container {
-    /* UBAH BAGIAN INI */
-    width: 460px;               /* Mengisi penuh sisa 30% ruang di kanan */    
-    /* TETAPKAN SETELAN AWAL ANDA (AMAN & BISA SCROLL) */
+    width: 460px;               
     height: 100dvh;
     overflow-y: auto;
     position: relative;
@@ -102,7 +99,6 @@ body {
     }
 }
 
-/* Kembali ke setelan awal Anda */
 main { width: 100%; }
 
 /* =========================
@@ -126,7 +122,6 @@ main { width: 100%; }
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* UBAH: Menggunakan center agar semua elemen kumpul di tengah secara vertikal */
     justify-content: center; 
     align-items: center;
     padding: 40px 0;
@@ -134,9 +129,8 @@ main { width: 100%; }
 }
 
 .cover-text-group {
-    /* UBAH: Menghilangkan margin kaku 200px agar posisi teks otomatis pas di tengah agak ke bawah */
-    margin-top: 40px; 
-    margin-bottom: 250px;
+    /* DIPERBAIKI: Menggunakan margin auto agar otomatis berada di tengah */
+    margin: auto 0; 
     color: #556B4F;
     text-align: center !important;
 }
@@ -164,14 +158,13 @@ main { width: 100%; }
 }
 
 .guest-box {
-    /* JURUS KUNCI: Mendorong kotak tamu agar selalu berada di paling bawah */
     margin-top: auto; 
     padding: 15px;
     background: #ffffffab;
     border-radius: 25px;
     border: 1px solid #ffffff80;
     width: 100%;
-    max-width: 400px; /* Mencegah kotak melar di desktop */
+    max-width: 400px;
     box-sizing: border-box;
     margin-bottom: 20px;
 }
@@ -212,10 +205,7 @@ main { width: 100%; }
     #guest-name {
         font-size: 19px;
     }
-    /* TAMBAHAN: Mengatur ulang space khusus mobile jika dirasa kurang pas */
-    .cover-text-group {
-        margin-top: auto; /* Mendorong teks sedikit ke bawah mengikuti space mobile */
-    }
+    /* DIPERBAIKI: Hapus paksaan margin-top mobile agar tetap auto/tengah seperti desktop */
 }
 
 /* =========================
@@ -282,7 +272,7 @@ main { width: 100%; }
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 10px 0px; /* DIUBAH ke 0px agar kotak mepet ke tepi kanan-kiri container */
+    padding: 10px 0px;
     width: 100%;
 }
 
@@ -291,30 +281,23 @@ main { width: 100%; }
     border: 1px solid rgba(82, 107, 85, 0.2);
     border-left: 4px solid var(--sage-dark);
     border-radius: 12px;
-    
-    /* Ruang di dalam kotak: 20px atas-bawah, 15px kanan-kiri */
     padding: 20px 15px !important; 
-    
     margin-bottom: 0px;
     min-height: auto;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(4px);
     text-align: left;
-    width: 100%; /* Memaksa kotak memanfaatkan seluruh lebar yang ada */
+    width: 100%;
 }
 
 /* =========================
    REVEAL ANIMATION (FADE IN)
 ========================= */
-.reveal {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity .6s ease, transform .6s ease;
-}
-
-.reveal.active { 
-    opacity: 1; 
-    transform: translateY(0); 
+/* DIPERBAIKI: Dihilangkan efeknya agar langsung tampil tanpa perlu discroll */
+.reveal, .reveal.active {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
 }
 
 /* =========================
@@ -425,7 +408,7 @@ main { width: 100%; }
 
 .story-item h3 { 
     color: var(--sage-dark); 
-    font-family: var(--font-body); /* Menggunakan font Montserrat agar terlihat modern */
+    font-family: var(--font-body);
     font-weight: 700;
     margin: 5px 0 8px 0; 
     font-size: 16px; 
@@ -445,7 +428,7 @@ main { width: 100%; }
 }
 
 /* =========================
-    GIFT (ATM CARD STYLE)
+   GIFT (ATM CARD STYLE)
 ========================= */
 #gift-container {
     display: flex;
@@ -457,14 +440,14 @@ main { width: 100%; }
 .atm-card {
     background: linear-gradient(245deg, var(--sage-dark) 0%, #cbd9c7 100%);
     color: #ffffff;
-    padding: 15px; /* DIPERKECIL dari 20px */
-    border-radius: 12px; /* DIPERKECIL dari 15px */
+    padding: 15px;
+    border-radius: 12px; 
     position: relative;
     width: 100%;
-    max-width: 375px; /* DITAMBAHKAN agar kartu tidak melar terlalu lebar */
-    margin: 0 auto; /* DITAMBAHKAN agar posisi kartu otomatis di tengah */
+    max-width: 375px; 
+    margin: 0 auto; 
     aspect-ratio: 1.58 / 1;
-    box-shadow: 0 6px 15px #000000b0; /* DIPERKECIL sedikit */
+    box-shadow: 0 6px 15px #000000b0; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -494,16 +477,16 @@ main { width: 100%; }
 
 /* LOGO / NAMA BANK */
 .bank-name {
-    font-size: 13px; /* DIPERKECIL dari 16px */
+    font-size: 13px; 
     font-weight: 700;
-    letter-spacing: 1.5px; /* DIPERKECIL dari 2px */
+    letter-spacing: 1.5px; 
     text-transform: uppercase;
 }
 
 /* CHIP ATM */
 .atm-chip {
-    width: 45px; /* DIPERKECIL dari 36px */
-    height: 35px; /* DIPERKECIL dari 26px */
+    width: 45px; 
+    height: 35px; 
     background: linear-gradient(135deg, #d4af37 0%, #f9e8a2 100%);
     border-radius: 4px;
     position: relative;
@@ -521,9 +504,9 @@ main { width: 100%; }
 /* NOMOR REKENING */
 .atm-card-number {
     font-family: 'Courier New', Courier, monospace;
-    font-size: clamp(13px, 4vw, 16px); /* DIPERKECIL dari clamp(16px, 4.5vw, 20px) */
+    font-size: clamp(13px, 4vw, 16px); 
     font-weight: bold;
-    letter-spacing: 2px; /* DIPERKECIL dari 2.5px */
+    letter-spacing: 2px; 
     margin: 8px 0;
     word-spacing: 3px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
@@ -541,7 +524,7 @@ main { width: 100%; }
 }
 
 .atm-card-holder span {
-    font-size: 8px; /* DIPERKECIL dari 9px */
+    font-size: 8px; 
     letter-spacing: 1px;
     opacity: 0.6;
     margin-bottom: 2px;
@@ -549,7 +532,7 @@ main { width: 100%; }
 
 /* NAMA PEMILIK REKENING */
 .atm-card-holder strong {
-    font-size: 11px; /* DIPERKECIL dari 13px */
+    font-size: 11px; 
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -559,15 +542,18 @@ main { width: 100%; }
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    padding: 4px 10px; /* DIPERKECIL dari 6px 14px */
+    padding: 4px 10px; 
     border-radius: 20px;
-    font-size: 10px; /* DIPERKECIL dari 11px */
+    font-size: 10px; 
     cursor: pointer;
     font-weight: 600;
     backdrop-filter: blur(5px);
     transition: all 0.3s;
-    display: block;       /* Mengubahnya jadi block agar bisa dipasang margin */
-    margin-left: auto;    /* Memaksa tombol mendorong dirinya mentok ke kanan */
+    
+    /* DIPERBAIKI: Dipaksa ke kanan di dalam flex/block */
+    display: block;       
+    margin-left: auto;
+    align-self: flex-end; 
 }
 
 .btn-copy-atm:hover {
@@ -706,7 +692,7 @@ main { width: 100%; }
     margin-top: 0;
     
     display: flex;
-    flex-direction: column; /* Ditambahkan agar konten tersusun rapi ke bawah */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     
@@ -770,11 +756,10 @@ main { width: 100%; }
     margin-top: 20px;
 }
 
-/* DI SINI PERBAIKANNYA: 
-   Nama class duplikat .closing yang merusak layout 
-   sudah dihapus & diganti menjadi .ty-footer agar normal kembali */
 .ty-footer  {
-    margin-top: 30px;
+    /* DIPERBAIKI: Mendorong footer ini otomatis menempel di dasar bawah layar */
+    margin-top: auto;
+    margin-bottom: 20px;
     width: 100%;
     color: #344934;
     font-family: var(--font-heading);
@@ -1122,15 +1107,15 @@ main { width: 100%; }
 .bank-info-wrapper {
     display: flex;
     align-items: center;
-    height: 42px; /* DINAIKKAN dari 32px agar logo lebih tinggi/besar */
+    height: 42px; 
 }
 
 .logo-bank-img {
     height: 75%;             
-    max-width: 200px;         /* DINAIKKAN dari 90px agar logo yang memanjang ke samping (seperti Mandiri/BNI) tidak gepeng */
+    max-width: 200px;         
     object-fit: contain;      
     background-color: #ffffff00; 
-    padding: 4px 10px;        /* Sedikit disesuaikan jarak napasnya */
+    padding: 4px 10px;        
     border-radius: 6px;       
     box-shadow: 0 2px 5px #00000000;
 }
@@ -1154,9 +1139,6 @@ main { width: 100%; }
     border-radius: 4px;
 }
 
-/* ========================================================
-   TEMPEL KODE BARU INI DI SINI (BAGIAN PALING BAWAH FILE)
-======================================================== */
 @media (max-width: 480px) {
     .intro .section-content {
         padding: 20px 15px !important;
