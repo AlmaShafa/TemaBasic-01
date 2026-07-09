@@ -126,17 +126,16 @@ main { width: 100%; }
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* KEMBALI KE ASAL: Membagi ruang atas dan bawah */
-    justify-content: space-between; 
+    /* KUNCI 1: Semua elemen didorong ke arah bawah secara natural */
+    justify-content: flex-end; 
     align-items: center;
-    padding: 60px 0 40px 0; /* Menambah padding atas agar tulisan tidak terlalu mentok ke atas */
+    padding: 40px 0;
     box-sizing: border-box;
 }
 
 .cover-text-group {
-    /* Mendorong teks agar otomatis turun ke area tengah bawah */
-    margin-top: auto; 
-    margin-bottom: 20px; 
+    /* KUNCI 2: Beri jarak bawah agar teks tidak menempel dengan kotak tamu */
+    margin-bottom: 40px; 
     color: #556B4F;
     text-align: center !important;
 }
@@ -164,16 +163,16 @@ main { width: 100%; }
 }
 
 .guest-box {
-    /* JURUS KUNCI: Mendorong kotak tamu agar selalu berada di paling bawah */
-    margin-top: auto; 
+    /* KUNCI 3: Bersihkan margin-top auto yang bikin berantakan tadi */
+    margin-top: 0; 
     padding: 15px;
     background: #ffffffab;
     border-radius: 25px;
     border: 1px solid #ffffff80;
     width: 100%;
-    max-width: 400px; /* Mencegah kotak melar di desktop */
+    max-width: 400px; /* Menjaga ukuran di desktop tetap rapi */
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Jarak aman dari bawah layar */
 }
 
 .guest-box button, #submit-wish, .wish-toggle, .btn-map {
