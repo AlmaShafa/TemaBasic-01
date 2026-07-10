@@ -710,7 +710,7 @@ main { width: 100%; }
     color: #526b55;
     position: relative;
     z-index: 2;
-    transform: translateY(-100px); /* Semakin besar angka minusnya, semakin ke atas posisinya */
+    transform: translateY(-40px); /* Semakin besar angka minusnya, semakin ke atas posisinya */
 }
 
 .closing h3 {
@@ -758,6 +758,7 @@ main { width: 100%; }
     letter-spacing: 2px;
     color: #344934;
     margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .ty-footer {
