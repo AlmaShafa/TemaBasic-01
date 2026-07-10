@@ -105,7 +105,7 @@ main { width: 100%; }
    COVER
 ========================= */
 .cover {
-    height: 100vh;
+    height: 100svh; /* 1. DIPERBAIKI: Ganti vh menjadi svh agar layar HP tidak melompat */
     background: linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0.15));
     display: flex;
     justify-content: center;
@@ -132,11 +132,16 @@ main { width: 100%; }
     margin: auto 0; 
     color: #556B4F;
     text-align: center !important;
-    transform: translateY(-120px); /* Ubah angka ini untuk mengatur turunnya */
+    
+    /* 2. DIPERBAIKI: Hapus transform, ganti dengan position & top agar TEKS TAJAM (TIDAK BLUR) */
+    position: relative;
+    top: -120px; 
 }
 
 .cover-text-down {
-    transform: translateY(80px); /* Ubah angka ini untuk mengatur turunnya */
+    /* 3. DIPERBAIKI: Sama seperti di atas, ganti transform dengan top */
+    position: relative;
+    top: 80px; 
 }
 
 .subtitle { 
@@ -154,7 +159,6 @@ main { width: 100%; }
     font-weight: 600;
     text-align: center;
 }
-
 .ampersand {
     font-size: 0.8em;
     display: block;
@@ -207,7 +211,7 @@ main { width: 100%; }
 
 @media (max-width: 768px) {
     #guest-name {
-        font-size: 19px;
+        font-size: 22px;
     }
     /* DIPERBAIKI: Hapus paksaan margin-top mobile agar tetap auto/tengah seperti desktop */
 }
